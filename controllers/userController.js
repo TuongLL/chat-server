@@ -111,3 +111,11 @@ module.exports.searchUser = async (req, res, next) => {
     next(ex);
   }
 };
+module.exports.updateStatus = async (req, res, next) => {
+  const {id, status} = req.body
+  let doc = await User.findOneAndUpdate({ _id: id }, status, {
+    new: true,
+  });
+  next()
+  return res.json(doc);
+}
