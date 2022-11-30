@@ -46,6 +46,7 @@ io.on("connection", (socket) => {
 
   socket.on("send-msg", (data) => {
     const sendUserSocket = onlineUsers.get(data.to);
+    console.log(sendUserSocket);
     if (sendUserSocket) {
       socket.to(sendUserSocket).emit("msg-recieve", {
         msg: data.msg,
@@ -53,7 +54,7 @@ io.on("connection", (socket) => {
       });
     }
   });
-  socket.on("update-status", () => {
-    socket.broadcast.emit("set-status", {});
+  socket.on("update-status", (id) => {
+    socket.broadcast.emit("set-status", id);
   })
 });

@@ -51,8 +51,10 @@ module.exports.getAllUsers = async (req, res, next) => {
       "_id",
       "status"
     ]);
+    // console.log(11, users);
     return res.json(users);
   } catch (ex) {
+    console.log(ex)
     next(ex);
   }
 };
