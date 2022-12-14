@@ -48,6 +48,7 @@ module.exports.addMessage = async (req, res, next) => {
 };
 
 module.exports.addFile = async (req, res, next) => {
+  console.log(REFRESH_TOKEN);
   const file = req.file;
   const oauth2Client = new google.auth.OAuth2(
     CLIENT_ID,
